@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Bestie Seventy';
+  src: url('./assets/BestieSeventy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
   --red: #cb3047;
@@ -7,40 +15,42 @@
   --dark-blue: #003049;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #fdf9f0;
+    background-image:
+      linear-gradient(rgba(180, 170, 150, 0.22) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(180, 170, 150, 0.22) 1px, transparent 1px);
+    background-size: 72px 72px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #fdf9f0; }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+  ::selection { background: var(--red); color: #fff; }
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(149, 187, 234, 0.4);
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 2px;
+  }
+
+  img { max-width: 100%; display: block; }
 }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Space Grotesk', sans-serif;
-  background-color: #fdf9f0;
-  background-image:
-    linear-gradient(rgba(180, 170, 150, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(180, 170, 150, 0.22) 1px, transparent 1px);
-  background-size: 72px 72px;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #fdf9f0; }
-::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
-::selection { background: var(--red); color: #fff; }
-
-input::placeholder, textarea::placeholder {
-  color: rgba(149, 187, 234, 0.4);
-}
-
-button:focus-visible {
-  outline: 2px solid var(--red);
-  outline-offset: 2px;
-}
-
-img { max-width: 100%; display: block; }
 
 /* Responsive grid form */
 @media (max-width: 560px) {

@@ -56,16 +56,6 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-
-          {/* Scroll cue */}
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            onClick={() => document.getElementById('me')?.scrollIntoView({ behavior: 'smooth' })}
-            style={{ cursor: 'pointer', marginTop: '0.5rem', opacity: 0.5, fontSize: '1.5rem' }}
-          >
-            ↓
-          </motion.div>
         </div>
       </section>
     </section>

@@ -49,9 +49,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [controls])
 
-  // Track which section is currently in view
+  // Track which section is currently in view — clear when none are visible
   useEffect(() => {
     const observers = []
+    const visible = new Set()
 
     links.forEach(({ id }) => {
       const el = document.getElementById(id)
@@ -59,7 +60,13 @@ export default function Navbar() {
 
       const obs = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActiveId(id)
+          if (entry.isIntersecting) {
+            visible.add(id)
+            setActiveId(id)
+          } else {
+            visible.delete(id)
+            if (visible.size === 0) setActiveId('')
+          }
         },
         { threshold: 0.35 }
       )
@@ -80,7 +87,8 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={controls}
-      style={{ willChange: 'transform',
+      style={{
+        willChange: 'transform',
         position: 'fixed',
         top: '2rem',
         left: '2.25rem',
@@ -112,14 +120,12 @@ export default function Navbar() {
       {/* Nav links */}
       <ul style={{
         display: 'flex',
-        gap: '1.8rem',
+        gap: '4rem',
         listStyle: 'none',
         alignItems: 'center',
-        margin: 0,
-        padding: 0,
       }}>
         {links.map((link) => (
-          <li key={link.label}>
+          <li key={link.label} style={{ position: 'relative' }}>
             <button
               onClick={() => navTo(link.id)}
               onMouseEnter={() => setHoverId(link.id)}
@@ -137,37 +143,37 @@ export default function Navbar() {
                 textShadow: '0 1px 3px rgba(0,0,0,0.2)',
                 position: 'relative',
                 display: 'flex',
+                position: 'relative',
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: 0,
               }}
             >
-              {link.label}
+              {/* Scribble — behind the text */}
 
-              {/* Scribble underline */}
-              <AnimatePresence>
-                {showScribble(link.id) && (
-                  <motion.img
-                    src={scribble}
-                    alt=""
-                    initial={{ opacity: 0, scale: 0.6 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.6 }}
-                    transition={{ duration: 0.25, ease: 'easeOut' }}
-                    style={{
-                      position: 'absolute',
-                      bottom: '-18px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: '160%',
-                      height: 'auto',
-                      pointerEvents: 'none',
-                      filter: 'brightness(0) invert(1)',  // make it white to show on red
-                    }}
-                  />
-                )}
-              </AnimatePresence>
+
+              {/* Text sits on top of the scribble */}
+              <div style={{ zIndex: 1 }}>
+                {link.label}
+              </div>
             </button>
+            <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '100px', height: '100%' }}>
+              {showScribble(link.id) && (
+                <motion.img
+                  key="scribble"
+                  src={scribble}
+                  alt=""
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.6 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  style={{
+                    pointerEvents: 'none',
+                    zIndex: 0,
+                  }}
+                />
+              )}
+            </div>
           </li>
         ))}
       </ul>

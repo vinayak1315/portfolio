@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Work from './components/Work'
 import Contact from './components/Contact'
+import Nothing from './components/Nothing'
 import './App.css'
 
 export default function App() {
@@ -11,8 +12,9 @@ export default function App() {
       <Navbar />
       <Hero />
       <About />
-      {/* <Work /> */}
-      <Contact />
+      <Work />
+      <Nothing />
+      {/* <Contact /> */}
     </>
   )
 }
