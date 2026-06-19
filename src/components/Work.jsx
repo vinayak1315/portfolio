@@ -73,7 +73,7 @@ const Work = () => {
         ))}
       </div>
 
-      <div className="flex justify-center mb-[53px]">
+      <div className="flex justify-center mb-[173px]">
         <img src={little_text} />
       </div>
 

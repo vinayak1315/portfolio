@@ -5,11 +5,22 @@ import pin_left from '../assets/pin_left.svg'
 import pin_right from '../assets/pin_right.svg'
 import arrow_left from '../assets/arrow_left.svg'
 import arrow_right from '../assets/arrow_right.svg'
+import scene1 from '../assets/nothing_scene_1.png'
+import scene2 from '../assets/nothing_scene_2.png'
+import scene3 from '../assets/nothing_scene_3.png'
+import scene4 from '../assets/nothing_scene_4.png'
+import scene5 from '../assets/nothing_scene_5.png'
+import scene6 from '../assets/nothing_scene_6.png'
+import scene7 from '../assets/nothing_scene_7.png'
+import scene8 from '../assets/nothing_scene_8.png'
+import nothing_happens from '../assets/nothing_happens.png'
+
+const scenes = [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8]
 
 const Nothing = () => {
   return (
-    <div className="flex flex-col items-center justify-content m-auto" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
-      <div style={{ fontFamily: 'Poppins, sans-serif' }} className="text-[18px] font-medium">Nothing Happend Act Cool.</div>
+    <div className="flex flex-col items-center justify-content m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
+      <div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[24px] font-medium">Nothing Happend Act Cool.</div>
       <div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[18px] font-medium">A speculative ad built around a phrase people use every day. The creative thought was to reinterpret that phrase through the lens of the Nothing brand, creating a message that feels both familiar and surprising. Taking embarrassment to a whole new level.</div>
 
       <div className="flex items-center justify-between mt-[48px] w-full">
@@ -30,24 +41,31 @@ const Nothing = () => {
           {/* Left — image grid (3 columns) */}
           <div className="w-[50%]">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
-              {/* 8 small dummy images */}
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div
-                  key={i}
-                  style={{
-                    aspectRatio: '1',
-                    background: 'rgba(0,48,73,0.15)',
-                    borderRadius: '8px',
-                    border: '2px solid rgba(0,48,73,0.2)',
-                  }}
-                />
+              {scenes.map((src, i) => (
+                <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: '600', color: '#003049' }}>Scene {i + 1}</span>
+                  <img
+                    src={src}
+                    alt={`Scene ${i + 1}`}
+                    style={{
+                      aspectRatio: '1',
+                      width: '100%',
+                      objectFit: 'cover',
+                      borderRadius: '8px',
+                      border: '2px solid rgba(0,48,73,0.2)',
+                    }}
+                  />
+                </div>
               ))}
-              {/* 4th row — 1 image spanning 2 columns */}
-              <div
+              {/* Last cell spanning 2 columns */}
+              <img
+                src={nothing_happens}
+                alt="Nothing Happens"
                 style={{
                   gridColumn: 'span 2',
                   aspectRatio: '2 / 1',
-                  background: 'rgba(0,48,73,0.15)',
+                  width: '100%',
+                  objectFit: 'cover',
                   borderRadius: '8px',
                   border: '2px solid rgba(0,48,73,0.2)',
                 }}
