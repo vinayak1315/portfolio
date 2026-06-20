@@ -25,7 +25,7 @@ const scriptScenes = [
 
 const Maybelline = () => {
   return (
-    <div className="flex flex-col items-center justify-content m-auto" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
+    <div className="flex flex-col items-center justify-content m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
       <div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[24px] font-medium">Maybe She's Born With It.</div>
       <div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[18px] font-medium">A speculative ad capturing one of life's most unforgettable moments. The creative thought was to frame raw, unscripted emotion through the lens of the Maybelline brand — beauty that shines through even the most tearful, joyful moments of life.</div>
 
