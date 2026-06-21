@@ -18,7 +18,7 @@ import scene10 from '../assets/Maybelline_10.png'
 import scene11 from '../assets/Maybelline_11.png'
 const scenes = [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, scene9, scene10, scene11]
 
-const Maybelling = () => {
+const Maybelling = ({ onPrev, onNext }) => {
   return (
     <div className="flex flex-col items-center justify-content m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
       <div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium">Happy Moments, Happy Tears</div>
@@ -84,8 +84,8 @@ const Maybelling = () => {
         </div>
 
         <div className="flex justify-between mt-[64px] cursor-pointer">
-          <img src={arrow_left} alt="Arrow Left" className="" />
-          <img src={arrow_right} alt="Arrow Right" className="" />
+          <img src={arrow_left} alt="Arrow Left" onClick={onPrev} />
+          <img src={arrow_right} alt="Arrow Right" onClick={onNext} />
         </div>
       </div>
     </div>

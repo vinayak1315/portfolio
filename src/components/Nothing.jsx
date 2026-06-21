@@ -16,10 +16,10 @@ import nothing_happens from '../assets/nothing_happens.png'
 
 const scenes = [scene1, scene2, scene3, scene4, scene6, scene7,  scene5, scene8]
 
-const Nothing = () => {
+const Nothing = ({ onPrev, onNext }) => {
   return (
-    <div className="flex flex-col items-center justify-content m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
-      <div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium">Nothing Happend Act Cool.</div>
+    <div className=" m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
+      <div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium flex flex-col items-center justify-content">Nothing Happend Act Cool.</div>
       <div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[16px] font-medium">A speculative ad built around a phrase people use every day. The creative thought was to reinterpret that phrase through the lens of the Nothing brand, creating a message that feels both familiar and surprising. Taking embarrassment to a whole new level.</div>
 
       <div className="flex items-center justify-between mt-[48px] w-full">
@@ -102,8 +102,8 @@ const Nothing = () => {
         </div>
 
         <div className="flex justify-between mt-[64px] cursor-pointer">
-          <img src={arrow_left} alt="Arrow Left" className="" />
-          <img src={arrow_right} alt="Arrow Right" className="" />
+          <img src={arrow_left} alt="Arrow Left" onClick={onPrev} />
+          <img src={arrow_right} alt="Arrow Right" onClick={onNext} />
         </div>
       </div>
 

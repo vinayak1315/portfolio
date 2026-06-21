@@ -17,9 +17,20 @@ const projects = [
   { id: 'ekin', src: ekin, alt: 'Ekin' },
 ]
 
-const Work = () => {
+const slideMap = {
+  nothing: 0,
+  kajal: 1,
+  loreal: 2,
+  cetaphil: 3,
+  ekin: 4,
+  drip: 5,
+}
+
+const Work = ({ onProjectClick }) => {
   const handleClick = (id) => {
-    // redirect logic will be added later
+    if (onProjectClick && slideMap[id] !== undefined) {
+      onProjectClick(slideMap[id])
+    }
   }
 
   return (

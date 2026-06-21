@@ -47,7 +47,7 @@ const ImageWithHover = ({ src, alt, style, className, onClick, label, icon }) =>
   )
 }
 
-const Ekin = () => {
+const Ekin = ({ onPrev, onNext }) => {
   const [popup, setPopup] = useState(null) // 'image1' | 'image2' | 'video'
 
   const close = () => setPopup(null)
@@ -142,8 +142,8 @@ const Ekin = () => {
         </div>
 
         <div className="flex justify-between mt-[64px] cursor-pointer">
-          <img src={arrow_left} alt="Arrow Left" className="" />
-          <img src={arrow_right} alt="Arrow Right" className="" />
+          <img src={arrow_left} alt="Arrow Left" onClick={onPrev} />
+          <img src={arrow_right} alt="Arrow Right" onClick={onNext} />
         </div>
       </div>
 
