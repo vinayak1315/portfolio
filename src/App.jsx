@@ -5,6 +5,11 @@ import Work from './components/Work'
 import Contact from './components/Contact'
 import Nothing from './components/Nothing'
 import Maybelline from './components/Maybelline'
+import BeatsOfWorth from './components/BeatsOfWorth'
+import Cetaphil from './components/Cetaphil'
+import Ekin from './components/Ekin'
+import KodavaTrip from './components/KodavaTrip'
+
 import './App.css'
 
 export default function App() {
@@ -16,6 +21,10 @@ export default function App() {
       <Work />
       <Nothing />
       <Maybelline />
+      <BeatsOfWorth />
+      <Cetaphil />
+      <Ekin />
+      <KodavaTrip />
       {/* <Contact /> */}
     </>
   )
