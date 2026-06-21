@@ -96,7 +96,7 @@ const Contact = () => {
             <ContactItem href="tel:+918328162250" delay={0.35} label="+91 83281 62250">
               <img src={callIcon} alt="Call" className="w-10 sm:w-auto" />
             </ContactItem>
-            <ContactItem href="mailto:agarwalnetal07@gmail.com" delay={0.55} label="Want to email?">
+            <ContactItem href="mailto:agarwalnetal07@gmail.com" delay={0.55} label="Click to email">
               <img src={mailIcon} alt="Email" className="w-10 sm:w-auto" />
             </ContactItem>
             <ContactItem href="https://www.linkedin.com/in/netal-agarwal-1383a0250/" delay={0.45} label="Open LinkedIn">
