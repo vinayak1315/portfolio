@@ -1,7 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-// Images
 import pin_right from '../assets/pin_right.svg'
 import arrow_left from '../assets/arrow_left.svg'
 import arrow_right from '../assets/arrow_right.svg'
@@ -25,11 +24,11 @@ const fadeUp = (delay = 0) => ({
 
 const Nothing = ({ onPrev, onNext }) => {
   return (
-    <div className="m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
+    <div className="m-auto mb-20 md:mb-[165px] px-4 md:px-0" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
 
       <motion.div
         style={{ fontFamily: "'Bestie Seventy', cursive" }}
-        className="text-[48px] font-medium flex flex-col items-center justify-content"
+        className="text-[28px] md:text-[48px] font-medium flex flex-col items-center"
         {...fadeUp(0)}
       >
         Nothing Happend Act Cool.
@@ -37,23 +36,22 @@ const Nothing = ({ onPrev, onNext }) => {
 
       <motion.div
         style={{ fontFamily: 'Poppins, sans-serif' }}
-        className="mt-[72px] text-[16px] font-medium"
+        className="mt-3 md:mt-[72px] text-[16px] font-medium"
         {...fadeUp(0.1)}
       >
         A speculative ad built around a phrase people use every day. The creative thought was to reinterpret that phrase through the lens of the Nothing brand, creating a message that feels both familiar and surprising. Taking embarrassment to a whole new level.
       </motion.div>
 
-      <motion.div className="flex items-center justify-between mt-[48px] w-full" {...fadeUp(0.18)}>
-        <div className="text-[20px] font-medium">Client: <span className="font-[26px] font-bold ml-[8px]">Nothing</span></div>
-        <div className="text-[20px] font-medium">Duration: <span className="font-[26px] font-bold ml-[8px]">8-10secs</span></div>
-        <div className="text-[20px] font-medium">Category: <span className="font-[26px] font-bold ml-[8px]">Spec Ads</span></div>
+      <motion.div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-3 md:mt-[48px] w-full gap-1 sm:gap-0" {...fadeUp(0.18)}>
+        <div className="text-[14px] sm:text-[20px] font-medium">Client: <span className="font-bold ml-[8px]">Nothing</span></div>
+        <div className="text-[14px] sm:text-[20px] font-medium">Duration: <span className="font-bold ml-[8px]">8-10secs</span></div>
+        <div className="text-[14px] sm:text-[20px] font-medium">Category: <span className="font-bold ml-[8px]">Spec Ads</span></div>
       </motion.div>
 
-      <motion.div className="relative mt-[31px]" {...fadeUp(0.28)}>
-        <img src={pin_right} alt="Pin Right" className="absolute top-[-25px] right-[-19px] z-10" />
+      <motion.div className="relative mt-3 md:mt-[31px]" {...fadeUp(0.28)}>
 
-        <div className="flex gap-[40px] w-full">
-          <div className="w-[45%]">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-[40px] w-full">
+          <div className="w-full md:w-[45%]">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                 {scenes.slice(0, 6).map((src, i) => (
@@ -77,9 +75,11 @@ const Nothing = ({ onPrev, onNext }) => {
             </div>
           </div>
 
-          <div className="w-[55%] bg-[#95BBEA] relative border-[5px] border-[#003049] px-[51px] py-[34px]" style={{ boxShadow: '5px 7px 7.2px 0 rgba(0, 0, 0, 0.79)', borderRadius: '20px' }}>
-            <div style={{ fontFamily: 'Poppins, sans-serif' }} className="text-[32px] mb-[20px] font-bold text-[#003049]">Script</div>
-            <p className="text-[20px] font-medium text-[#003049] leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          {/* Script box — pin lives here on mobile (inside), escapes on desktop */}
+          <div className="w-full md:w-[55%] bg-[#95BBEA] relative border-[5px] border-[#003049] px-6 md:px-[51px] py-6 md:py-[34px]" style={{ boxShadow: '5px 7px 7.2px 0 rgba(0, 0, 0, 0.79)', borderRadius: '20px' }}>
+            <img src={pin_right} alt="" className="absolute top-2 right-2 w-8 md:w-auto md:top-[-25px] md:right-[-19px] z-10" />
+            <div style={{ fontFamily: 'Poppins, sans-serif' }} className="text-[22px] md:text-[32px] mb-[20px] font-bold text-[#003049]">Script</div>
+            <p className="text-[15px] md:text-[20px] font-medium text-[#003049] leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
               Scene opens with a woman wearing Nothing Headphones<br />
               While she is walking down the street, she notices someone in the distance enthusiastically waving in her direction. She pauses, slightly confused.<br /><br />
               After a brief hesitation, she awkwardly raises her hand and waves back with a polite smile. Her smile fades into uncertainty as she realizes something isn't adding up.<br /><br />
@@ -92,7 +92,7 @@ const Nothing = ({ onPrev, onNext }) => {
           </div>
         </div>
 
-        <div className="flex justify-between mt-[64px] cursor-pointer">
+        <div className="flex justify-between mt-8 md:mt-[64px] cursor-pointer">
           <img src={arrow_left} alt="Arrow Left" onClick={onPrev} />
           <img src={arrow_right} alt="Arrow Right" onClick={onNext} />
         </div>

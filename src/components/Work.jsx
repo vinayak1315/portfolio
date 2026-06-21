@@ -48,7 +48,7 @@ const Work = ({ onProjectClick }) => {
   return (
     <section id="work">
       <motion.div
-        className="flex justify-center mt-[110px] mb-[53px]"
+        className="flex justify-center mt-10 md:mt-[110px] mb-4 md:mb-[53px]"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
@@ -57,17 +57,7 @@ const Work = ({ onProjectClick }) => {
         <img src={what_i_do} alt="What I Do" />
       </motion.div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          columnGap: '40px',
-          rowGap: '20px',
-          maxWidth: '1100px',
-          margin: '0 auto',
-          padding: '0 2rem 6rem',
-        }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5 max-w-[1100px] mx-auto px-4 sm:px-8 pb-16 sm:pb-24">
         {projects.map((project, i) => (
           <motion.button
             key={project.id}
@@ -105,7 +95,7 @@ const Work = ({ onProjectClick }) => {
       </div>
 
       <motion.div
-        className="flex justify-center mb-[173px]"
+        className="flex justify-center mb-10 md:mb-[173px]"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

@@ -52,7 +52,41 @@
   img { max-width: 100%; display: block; }
 }
 
-/* Responsive grid form */
+/* Responsive navbar */
+.nav-root {
+  position: fixed !important;
+  top: 2rem !important;
+  left: 2.25rem !important;
+  right: 2.25rem !important;
+  z-index: 100 !important;
+  height: 80px !important;
+  padding: 24px 40px !important;
+}
+.nav-links {
+  list-style: none !important;
+  align-items: center !important;
+  gap: 4rem !important;
+}
+.nav-link-btn {
+  font-size: 24px !important;
+}
+
+@media (max-width: 767px) {
+  .nav-root {
+    top: 0.5rem !important;
+    left: 0.5rem !important;
+    right: 0.5rem !important;
+    height: 56px !important;
+    padding: 10px 16px !important;
+  }
+  .nav-links {
+    gap: 1.25rem !important;
+  }
+  .nav-link-btn {
+    font-size: 15px !important;
+  }
+}
+
 @media (max-width: 560px) {
   .contact-grid { grid-template-columns: 1fr !important; }
 }
