@@ -26,6 +26,18 @@ const slideMap = {
   drip: 5,
 }
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.95 },
+  visible: (i) => ({
+    opacity: 1, y: 0, scale: 1,
+    transition: {
+      delay: i * 0.12,
+      duration: 0.65,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  }),
+}
+
 const Work = ({ onProjectClick }) => {
   const handleClick = (id) => {
     if (onProjectClick && slideMap[id] !== undefined) {
@@ -35,9 +47,15 @@ const Work = ({ onProjectClick }) => {
 
   return (
     <section id="work">
-      <div className="flex justify-center mt-[110px] mb-[53px]">
+      <motion.div
+        className="flex justify-center mt-[110px] mb-[53px]"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      >
         <img src={what_i_do} alt="What I Do" />
-      </div>
+      </motion.div>
 
       <div
         style={{
@@ -50,13 +68,17 @@ const Work = ({ onProjectClick }) => {
           padding: '0 2rem 6rem',
         }}
       >
-        {projects.map((project) => (
+        {projects.map((project, i) => (
           <motion.button
             key={project.id}
+            custom={i}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
             onClick={() => handleClick(project.id)}
-            whileHover={{ scale: 1.04, y: -6 }}
+            whileHover={{ scale: 1.04, y: -8 }}
             whileTap={{ scale: 0.97 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             style={{
               background: 'none',
               border: 'none',
@@ -69,9 +91,7 @@ const Work = ({ onProjectClick }) => {
             <motion.img
               src={project.src}
               alt={project.alt}
-              whileHover={{
-                filter: 'drop-shadow(8px 12px 10px rgba(0, 0, 0, 0.75))',
-              }}
+              whileHover={{ filter: 'drop-shadow(8px 12px 10px rgba(0, 0, 0, 0.75))' }}
               transition={{ duration: 0.25 }}
               style={{
                 width: '100%',
@@ -84,11 +104,15 @@ const Work = ({ onProjectClick }) => {
         ))}
       </div>
 
-      <div className="flex justify-center mb-[173px]">
+      <motion.div
+        className="flex justify-center mb-[173px]"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+      >
         <img src={little_text} />
-      </div>
-
-
+      </motion.div>
     </section>
   )
 }

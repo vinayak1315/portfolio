@@ -1,4 +1,11 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+})
 
 // Images
 import pin_left from '../assets/pin_left.svg'
@@ -21,19 +28,19 @@ const scenes = [scene1, scene2, scene3, scene4, scene5, scene6, scene7, scene8, 
 const Maybelling = ({ onPrev, onNext }) => {
   return (
     <div className="flex flex-col items-center justify-content m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
-      <div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium">Happy Moments, Happy Tears</div>
-      <div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[16px] font-medium">
+      <motion.div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium" {...fadeUp(0)}>Happy Moments, Happy Tears</motion.div>
+      <motion.div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[16px] font-medium" {...fadeUp(0.1)}>
         This spec ad explores a real emotional moment where makeup is often put to the test. Built around the insight that tears shouldn't ruin life's biggest moments, the idea positions Maybelline's smudge-proof kajal as a product that stays intact through every emotion.
-      </div>
+      </motion.div>
 
-      <div className="flex items-center justify-between mt-[48px] w-full">
+      <motion.div className="flex items-center justify-between mt-[48px] w-full" {...fadeUp(0.18)}>
         <div className="text-[20px] font-medium">Client: <span className="font-[26px] font-bold ml-[8px]">Maybelline</span></div>
         <div className="text-[20px] font-medium">Duration: <span className="font-[26px] font-bold ml-[8px]">35-45secs</span></div>
         <div className="text-[20px] font-medium">Category: <span className="font-[26px] font-bold ml-[8px]">Spec Ads</span></div>
-      </div>
+      </motion.div>
 
 
-      <div className="relative mt-[31px]">
+      <motion.div className="relative mt-[31px]" {...fadeUp(0.28)}>
         <img src={pin_right} alt="Pin Right" className="absolute top-[-25px] right-[-19px] z-10" />
         {/* 50 / 50 layout */}
         <div className="flex gap-[40px] w-full">
@@ -87,7 +94,7 @@ const Maybelling = ({ onPrev, onNext }) => {
           <img src={arrow_left} alt="Arrow Left" onClick={onPrev} />
           <img src={arrow_right} alt="Arrow Right" onClick={onNext} />
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

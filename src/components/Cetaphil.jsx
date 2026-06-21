@@ -1,4 +1,12 @@
 import React, { useState } from 'react'
+import { createPortal } from 'react-dom'
+import { motion } from 'framer-motion'
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+})
 
 // Images
 import pin_left from '../assets/pin_left.svg'
@@ -54,17 +62,17 @@ const Cetaphil = ({ onPrev, onNext }) => {
   return (
     <div>
       <div className="m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
-        <div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium flex flex-col items-center justify-content ">OOH La La</div>
-        <div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[16px] font-medium">
+        <motion.div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium flex flex-col items-center justify-content" {...fadeUp(0)}>OOH La La</motion.div>
+        <motion.div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[16px] font-medium" {...fadeUp(0.1)}>
           A collection of speculative OOH ads built around simple observations and visual wordplay.
-        </div>
+        </motion.div>
 
-        <div className="flex items-center justify-between mt-[48px] w-full">
+        <motion.div className="flex items-center justify-between mt-[48px] w-full" {...fadeUp(0.18)}>
           <div className="text-[20px] font-medium">Client: <span className="font-[26px] font-bold ml-[8px]">Cetaphil</span></div>
           <div className="text-[20px] font-medium">Category: <span className="font-[26px] font-bold ml-[8px]">OOH Spec ADS</span></div>
-        </div>
+        </motion.div>
 
-        <div className="relative mt-[31px]">
+        <motion.div className="relative mt-[31px]" {...fadeUp(0.28)}>
           <img src={pin_right} alt="Pin Right" className="absolute top-[-25px] right-[-19px] z-10" />
 
           <div className="flex gap-[40px] w-full">
@@ -97,7 +105,7 @@ const Cetaphil = ({ onPrev, onNext }) => {
             </div>
 
           </div>
-        </div>
+        </motion.div>
 
       </div>
 
@@ -151,7 +159,7 @@ const Cetaphil = ({ onPrev, onNext }) => {
       </div>
 
       {/* Single popup overlay for all images */}
-      <div
+      {createPortal(<div
         onClick={close}
         style={{
           position: 'fixed', inset: 0,
@@ -194,7 +202,7 @@ const Cetaphil = ({ onPrev, onNext }) => {
             />
           )}
         </div>
-      </div>
+      </div>, document.body)}
     </div>
   )
 }

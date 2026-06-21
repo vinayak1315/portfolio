@@ -1,4 +1,12 @@
 import React, { useState } from 'react'
+import { createPortal } from 'react-dom'
+import { motion } from 'framer-motion'
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 50 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.65, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+})
 
 // Images
 import pin_left from '../assets/pin_left.svg'
@@ -53,18 +61,18 @@ const Ekin = ({ onPrev, onNext }) => {
 
   return (
     <div className="m-auto mb-[165px]" style={{ fontFamily: 'Poppins, sans-serif', maxWidth: '1100px' }}>
-      <div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium flex flex-col items-center justify-content ">Kodava Drip</div>
-      <div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[16px] font-medium">
+      <motion.div style={{ fontFamily: "'Bestie Seventy', cursive" }} className="text-[48px] font-medium flex flex-col items-center justify-content" {...fadeUp(0)}>Kodava Drip</motion.div>
+      <motion.div style={{ fontFamily: 'Poppins, sans-serif' }} className="mt-[72px] text-[16px] font-medium" {...fadeUp(0.1)}>
         Kodava Drip<br />
         Good coffee, good copy good campaigns for all types of coffee drinkers.
-      </div>
+      </motion.div>
 
-      <div className="flex items-center justify-between mt-[48px] w-full">
+      <motion.div className="flex items-center justify-between mt-[48px] w-full" {...fadeUp(0.18)}>
         <div className="text-[20px] font-medium">Client: <span className="font-[26px] font-bold ml-[8px]">Kodava Drip</span></div>
         <div className="text-[20px] font-medium">Category: <span className="font-[26px] font-bold ml-[8px]">Campaign</span></div>
-      </div>
+      </motion.div>
 
-      <div className="relative mt-[31px]">
+      <motion.div className="relative mt-[31px]" {...fadeUp(0.28)}>
         <img src={pin_right} alt="Pin Right" className="absolute top-[-25px] right-[-19px] z-10" />
 
         <div className="flex gap-[40px] w-full">
@@ -136,10 +144,10 @@ const Ekin = ({ onPrev, onNext }) => {
           <img src={arrow_left} alt="Arrow Left" onClick={onPrev} />
           <img src={arrow_right} alt="Arrow Right" onClick={onNext} />
         </div>
-      </div>
+      </motion.div>
 
       {/* Popup overlay */}
-      <div
+      {createPortal(<div
         onClick={close}
         style={{
           position: 'fixed', inset: 0,
@@ -187,7 +195,7 @@ const Ekin = ({ onPrev, onNext }) => {
             </div>
           )}
         </div>
-      </div>
+      </div>, document.body)}
     </div>
   )
 }
